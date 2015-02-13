@@ -27,4 +27,25 @@ class UsersController < ApplicationController
   	end
   end
 
+  def login
+    @user = User.new
+  end
+
+  def do_login
+    params_filtered = params.require(:user).permit(:email, :password)
+    @user = User.new(params_filtered)
+    if @user_logged = @user.login
+      session[:user_id] = @user_logged.id
+      redirect_to products_path, notice: "Bienvenido #{@user.name}"
+    else
+      flash[:error] = 'Ocurrio un error logeando al usuario'
+      render 'login'
+    end
+  end
+
+  def logout
+    session[:user_id] = nil
+    redirect_to login_users_path
+  end
+
 end

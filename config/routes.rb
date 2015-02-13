@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
   resources :products
-  resources :users
+  resources :users do
+    collection do 
+      get "login", action: :login
+      post "login", action: :do_login
+      delete "login", action: :logout
+    end
+  end
 
   # get 'users', to: 'users#index'
   # get 'users/:id', to: 'users#show'
