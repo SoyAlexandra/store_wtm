@@ -1,0 +1,23 @@
+<h1>Crear un nuevo Poducto</h1>
+
+<%=form_for @product do |f|%>
+	<%= f.label :ref%></br>
+	<%= f.text_field :ref%></br>
+	<%= f.label :price%>
+	<%= f.text_field :price%></br>
+	<%= f.label :quantity%>
+	<%= f.select :quantity, options_for_select([1,2,3,4,5,6,7,8,9])%></br>
+	<%= f.label :brand%>
+	Toto<%= f.radio_button(:brand, "Totto")%></br>
+	Americanino<%= f.radio_button(:brand, "Americanino")%></br>
+	Jean<%= f.radio_button(:brand, "jean")%></br>
+	<%= f.label :name%>
+	<%= f.text_field :name%></br>
+	<%= f.label :description%>
+	<%= f.text_field :description%></br>
+	<%= f.label :size%>
+	<%= f.text_field :size%></br>
+	<%= f.label :color%>
+	<%= f.select :color,options_for_select(["red", "blue", "gold"])%></br>
+	<%= f.submit%>
+<%end%>

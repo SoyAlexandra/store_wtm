@@ -1,0 +1,14 @@
+<% if !@user.errors.empty? %>
+	<ol>
+		<% @user.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+	</ol>
+<% end %>
+
+<%= form_for @user do |f| %>
+	<%= f.text_field :name %>
+	<%= f.text_field :email %>
+	<%= f.text_field :password %>
+	<%= f.submit %>
+<% end %>
