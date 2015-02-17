@@ -2,17 +2,26 @@
 <html>
 <head>
   <title>PruebaClass</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="menu">
-	<% if session[:user_id] %>
-		<%= link_to 'Cerrar sesion', login_users_path, method: :delete %>
-	<% end %>
+<div class="container-fluid">
+  <header class="row">
+    <div class="col-md-6">
+    </div>
+    <div class="col-md-6">
+      <% if session[:user_id] %>
+          <%= link_to 'Cerrar sesion', login_users_path, method: :delete %>
+      <% end %>
+    </div>
+  </header>
+  <section id="main" class="col-md-8 col-md-offset-2">
+    <%= yield %>
+  </section>
+  <footer>
+  </footer>
 </div>
-<%= yield %>
-
 </body>
 </html>

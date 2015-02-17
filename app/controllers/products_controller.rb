@@ -17,16 +17,16 @@ class ProductsController < ApplicationController
   def create
   	@product = Product.new(products_params)
     if @product.save
-      redirect_to products_path, notice: "Todo bien!"
+      redirect_to products_path, notice: 'Todo bien!'
     else
-      render "new"
+      render 'new'
     end  
   end
 
   private
 
   def products_params
-  	params.require(:products).permit(:ref, :price, :quantity, :brand, :name, :description, :size, :color)
+  	params.require(:product).permit(:ref, :price, :quantity, :brand, :name, :description, :size, :color)
   end
   
 end
