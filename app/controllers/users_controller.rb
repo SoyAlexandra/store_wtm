@@ -27,6 +27,24 @@ class UsersController < ApplicationController
   	end
   end
 
+  #users/:id
+  def update
+    params_filtered = params.require(:user).permit(:name, :email, :password)
+    #params_filtered = {name: "michel", email:"michel@gmai.com", password:"2131312"}
+    @user = User.find(params[:id])
+    if @user.update(params_filtered)
+      redirect_to users_path
+    else
+      render 'new'
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to users_path
+  end
+
   def login
     @user = User.new
   end
