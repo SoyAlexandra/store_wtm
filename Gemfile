@@ -27,6 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'dotenv-rails', :groups => [:development, :test]
 
+gem 'devise'
 gem "daemons"
 gem 'delayed_job_active_record'
 
