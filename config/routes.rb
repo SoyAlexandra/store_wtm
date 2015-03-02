@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations" }
   root to: "users#index"
 
+  get "/auth/:provider/callback", to: "omni_sessions#create"
+  delete "/signout" => "omni_sessions#destroy", :as => :signout
+
   resources :products
   resources :users do
-    collection do 
+    collection do
       get "login", action: :login
       post "login", action: :do_login
       delete "login", action: :logout
@@ -19,7 +22,7 @@ Rails.application.routes.draw do
   # get 'users/:id/edit', to: 'users#edit'
   # put 'users/:id/update', to: 'users#update'
   # delete 'users/:id/destroy', to: 'users#destroy'
-  
+
   get 'sells/index'
 
   get 'sells/:id', to: 'sells#show'
@@ -41,7 +44,7 @@ Rails.application.routes.draw do
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
-    # Example resource route (maps HTTP verbs to controller actions automatically):
+  # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
   # Example resource route with options:
