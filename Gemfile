@@ -32,6 +32,15 @@ gem 'devise'
 gem "daemons"
 gem 'delayed_job_active_record'
 
+#Before install imagemagick
+# for mac => brew install imagemagick
+# for linux => sudo apt-get install imagemagick
+#installing the gem
+#rails g migration add_avatar_to_users avatar:string
+gem 'carrierwave'
+gem 'rmagick'
+gem 'mini_magick'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   #users/
   def create
-  	params_filtered = params.require(:user).permit(:name, :email, :password)
+  	params_filtered = params.require(:user).permit(:name, :email, :password, :avatar)
   	#params_filtered = {name: "michel", email:"michel@gmai.com", password:"2131312"}
   	@user = User.new(params_filtered)
   	if @user.save
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   #users/:id
   def update
-    params_filtered = params.require(:user).permit(:name, :email, :password)
+    params_filtered = params.require(:user).permit(:name, :email, :password, :avatar)
     #params_filtered = {name: "michel", email:"michel@gmai.com", password:"2131312"}
     @user = User.find(params[:id])
     if @user.update(params_filtered)

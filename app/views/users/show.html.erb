@@ -2,7 +2,9 @@
 
 <h2>Nombre:</h2> <%= @user.name %> 
 <br/>
-<h2>Email:</h2> <%= @user.email %> 
-<br/><br/>
+<h2>Email:</h2> <%= @user.email %>
+<br/>
+<h2>Avatar:</h2> <%= image_tag @user.avatar.url %>
+<br/>
 
 <%= link_to 'Volver al listado', url_for(controller: :users, action: :index) %>

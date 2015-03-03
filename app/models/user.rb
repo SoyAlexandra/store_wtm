@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
 
   after_create :send_email
 
+  #for carrierwave
+  mount_uploader :avatar, AvatarUploader
+
   def login
     User.where(email: self.email, password: self.password).first
   end
